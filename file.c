@@ -1,4 +1,5 @@
 #include "file.h"
+#include "list.h"
 
 void file_display(char filename)
 {
@@ -24,26 +25,39 @@ void file_display(char filename)
    fclose(fp);
 }
 
-void file_write(char content)
+void file_write(FILE** dest, t_list* list)
 {
-   char ch, file_name[25];
-   FILE *fp;
+    if (list != NULL)
+    {
+        int intval;
+        double doubleval;
 
-   printf("Enter the name of file you wish to see\n");
-   gets(file_name);
+        fprintf(dest, "%s:", list->key);
 
-   fp = fopen(file_name,"r"); // read mode
+        if(list->type == INT_TYPE)
+        {
+            memcpy(&intval,list->value, sizeof(int));
+            fprintf(file,"%d", intval);
+        }
+        else if(list->type == DOUBLE_TYPE)
+        {
+            memcpy(&doubleval,list->value, sizeof(double));
+            fprintf(file,"%lf", doubleval);
+        }
+        else if(list->type == STRING_TYPE)
+        {
+            fprintf(file,"'%s'",list->value);
+        }
+    }
+}
 
-   if( fp == NULL )
-   {
-      perror("Error while opening the file.\n");
-      exit(EXIT_FAILURE);
-   }
+int str_cut(char *str, int begin, int len)
+{
+    int l = strlen(str);
 
-   printf("The contents of %s file are :\n", file_name);
+    if (len < 0) len = l - begin;
+    if (begin + len > l) len = l - begin;
+    memmove(str + begin, str + begin + len, l - len + 1);
 
-   while( ( ch = fgetc(fp) ) != EOF )
-      printf("%c",ch);
-
-   fclose(fp);
+    return len;
 }

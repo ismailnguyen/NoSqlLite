@@ -24,7 +24,7 @@ typedef struct s_hashmap
     t_hashmap_entry** entries; //le tableau
 } t_hashmap ;
 
-void hash_map_display(t_hashmap map);
+void hash_map_display(t_hashmap * map);
 t_hashmap * hashmap_create(unsigned int slots, double load_float, double growth_factor);
 t_hashmap_entry * hashmap_entry_create(char* key, void* value);
 void hashmap_put(t_hashmap * map, char* key, void* value);

@@ -2,13 +2,13 @@
 
 void hash_map_display(t_hashmap * map)
 {
-    unsigned int i =O;
+    unsigned int i = 0;
     t_hashmap_entry* tmp;
     while(i<map->slots)
     {
         tmp = map->entries[i];
 
-        while(tmp!=null)
+        while(tmp != NULL)
         {
             printf("%s -> %s\n", tmp->key, tmp->value);
             tmp = tmp->next;

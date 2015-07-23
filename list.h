@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "hashmap.c"
 
 typedef struct s_list
 {
