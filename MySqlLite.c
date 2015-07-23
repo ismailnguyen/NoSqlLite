@@ -3,12 +3,6 @@
 #include <string.h>
 #include "nosqlite.h"
 
-int startsWith(const char *pre, const char *str)
-{
-    size_t lenpre = strlen(pre),lenstr = strlen(str);
-    return lenstr < lenpre ? 0 : strncmp(pre, str, lenpre) == 0;
-}
-
 void main (int argc, char **argv)
 {
     char * _collection,
