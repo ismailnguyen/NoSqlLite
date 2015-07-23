@@ -5,6 +5,7 @@
 
 void main (int argc, char **argv)
 {
+    t_hashmap * _hashmap = NULL;
     char * _collection,
             * _insert,
             * _set,
@@ -24,7 +25,7 @@ void main (int argc, char **argv)
 	    _collection[strlen(_parameters)] = '\0';
 
         //DEBUG
-	    printf("collection: %s\n",  _collection);
+	    printf("collection: %s\n", _collection);
 
         if(strstr(argv[2], "-insert") != NULL)
         {
@@ -35,8 +36,10 @@ void main (int argc, char **argv)
             _insert[strlen(_parameters)] = '\0';
 
             //DEBUG
-            printf("insert: %s\n",  _insert);
-            //JSON_parse(_insert);
+            printf("insert: %s\n", _insert);
+            _hashmap = JSON_parse(_insert);
+
+            hashmap_display(_hashmap);
 
         }
         if(strstr(argv[2], "-set") != NULL)
@@ -48,7 +51,7 @@ void main (int argc, char **argv)
             _set[strlen(_parameters)] = '\0';
 
             //DEBUG
-            printf("set: %s\n",  _set);
+            printf("set: %s\n", _set);
 
             if(strstr(argv[3], "-where") != NULL)
             {
@@ -59,7 +62,7 @@ void main (int argc, char **argv)
                 _where[strlen(_parameters)] = '\0';
 
                 //DEBUG
-                printf("where: %s\n",  _where);
+                printf("where: %s\n", _where);
             }
         }
         if(strstr(argv[2], "-find") != NULL)
@@ -71,7 +74,7 @@ void main (int argc, char **argv)
             _find[strlen(_parameters)] = '\0';
 
             //DEBUG
-            printf("find: %s\n",  _find);
+            printf("find: %s\n", _find);
 
             if(strstr(argv[3], "-projection") != NULL)
             {
@@ -82,7 +85,7 @@ void main (int argc, char **argv)
                 _projection[strlen(_parameters)] = '\0';
 
                 //DEBUG
-                printf("projection: %s\n",  _projection);
+                printf("projection: %s\n", _projection);
 
                 if(strstr(argv[4], "-sort") != NULL)
                 {
@@ -93,7 +96,7 @@ void main (int argc, char **argv)
                     _sort[strlen(_parameters)] = '\0';
 
                     //DEBUG
-                    printf("sort: %s\n",  _sort);
+                    printf("sort: %s\n", _sort);
             }
             }
         }
@@ -106,7 +109,7 @@ void main (int argc, char **argv)
             _remove[strlen(_parameters)] = '\0';
 
             //DEBUG
-            printf("remove: %s\n",  _remove);
+            printf("remove: %s\n", _remove);
         }
 	}
 	//return 0;

@@ -4,8 +4,8 @@
 {
 	t_hashmap* map = hashmap_create(100, 0.7, 2.1);
 	//t_hashmap_entry* entry = hashmap_entry_create("Bonjour", "hashmap");
-	hashmap_put(map, "Bonjour", "hashmap");
-	hashmap_put(map, "Aurevoir", "prout");
+	hashmap_put(map, "name", "Ismail");
+	hashmap_put(map, "age", "901");
 
 	hashmap_display(map);
 	system("pause");
@@ -66,21 +66,6 @@ unsigned int hashmap_hash(char* key, unsigned int slots)
 	return hashcode % slots;
 }
 
-/*t_hashmap_keys* hashmap_keys(t_hashmap* map)
-{
-	t_hashmap_keys* hkeys = (t_hashmap_keys*)malloc(sizeof(t_hashmap_keys));
-
-	hkeys->keys = (char**)malloc(sizeof(char*)*hashmap->size);
-
-	unsigned int i = 0;
-	while(i < map->slots)
-	{
-		if(map->entry[i]->key)
-			hkeys->keys[i]
-		i++;
-	}
-}*/
-
 t_hashmap_keys* hashmap_keys(t_hashmap* map)
 {
 	t_hashmap_keys* hkeys = (t_hashmap_keys*)malloc(sizeof(t_hashmap_keys));
@@ -104,6 +89,20 @@ t_hashmap_keys* hashmap_keys(t_hashmap* map)
 	}
 
 	return hkeys;
+
+    /*
+    t_hashmap_keys* hkeys = (t_hashmap_keys*)malloc(sizeof(t_hashmap_keys));
+
+	hkeys->keys = (char**)malloc(sizeof(char*)*hashmap->size);
+
+	unsigned int i = 0;
+	while(i < map->slots)
+	{
+		if(map->entry[i]->key)
+			hkeys->keys[i]
+		i++;
+	}
+	*/
 }
 
 
@@ -170,6 +169,7 @@ void hashmap_expand(t_hashmap* map)
 			free(prev);
 		}
 	}
+
 	free(entry);
 }
 
@@ -190,4 +190,34 @@ void hashmap_remove(t_hashmap* map, char* key)
 		}
 		entry = &(*entry)->next;
 	}
+}
+
+t_hashmap* JSON_parse(char* string)
+{
+    t_hashmap* map = hashmap_create(100, 0.7, 2.1);
+
+    while()
+    {
+        char* _key = NULL;
+        char* _value = NULL;
+
+        hashmap_put(map, _key, _value);
+    }
+
+	return map;
+}
+
+char* JSON_stringify(t_hashmap* map)
+{
+
+}
+
+void* hashmap_traverse(t_hashmap*map, char* path)
+{
+
+}
+
+void hashmap_put(t_hashmap*map, char* path, void* value)
+{
+
 }

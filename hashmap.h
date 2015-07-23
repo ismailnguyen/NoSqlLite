@@ -45,11 +45,8 @@ unsigned int hashmap_hash(char* key, unsigned int slots);
 //		Si non : Mise à jour de la valeur
 //		Si non : Ajout de l'entrée dans la liste chainée
 void hashmap_put(t_hashmap* map, char* key, void* value);
-
 void hashmap_remove(t_hashmap* map, char* key);
-
 void* hashmap_get(t_hashmap* map, char* key);
-
 t_hashmap_keys* hashmap_keys(t_hashmap* map);
 
 //JSON parser
